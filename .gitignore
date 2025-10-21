@@ -1,0 +1,25 @@
+# Ignorar todo el entorno virtual
+Proyecto/Include/
+Proyecto/Lib/
+Proyecto/Scripts/
+Proyecto/Share/
+Proyecto/pyenv.cfg
+
+# Ignorar archivos de Python temporales y caché
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+
+# Ignorar archivos de entorno
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Ignorar archivos de configuración personalizados
+*.ini
+*.cfg
