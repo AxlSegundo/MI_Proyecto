@@ -7,10 +7,7 @@ from sklearn.ensemble import RandomForestClassifier
 
 
 def _pick_search(estimator, param_grid, scoring="f1", cv=5, n_jobs=-1):
-    """
-    Si el grid es chico -> GridSearchCV
-    Si es grande -> HalvingGridSearchCV
-    """
+
     n_combos = 1
     for v in param_grid.values():
         n_combos *= len(v)

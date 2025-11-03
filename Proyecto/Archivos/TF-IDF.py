@@ -1,4 +1,3 @@
-# tfidf_vectors.py (arreglado, sin argparse)
 import pandas as pd
 from joblib import dump
 from scipy import sparse

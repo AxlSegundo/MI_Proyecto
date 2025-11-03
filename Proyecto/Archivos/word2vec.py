@@ -1,4 +1,3 @@
-# word2vec_weighted_only.py
 import os
 import numpy as np
 import pandas as pd
