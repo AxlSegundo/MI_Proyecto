@@ -17,7 +17,7 @@ OUTPUT_DIR = "Proyecto/Data/Salidas/"
 TFIDF_FOR_W2V_PATH = os.path.join(OUTPUT_DIR, "tfidf_for_w2v_vectorizer.joblib")
 
 
-VEC_SIZE = 500
+VEC_SIZE = 700
 WINDOW   = 5
 MIN_CNT  = 2
 EPOCHS   = 10
