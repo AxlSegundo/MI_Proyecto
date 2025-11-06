@@ -1,0 +1,2 @@
+modelo,acc_train,prec_train,rec_train,f1_train,acc_test,prec_test,rec_test,f1_test,tn,fp,fn,tp,cm_path,best_lr,best_batch_size,model_dir
+beto_finetuned,0.9942857142857143,0.995702005730659,0.9928571428571429,0.994277539341917,0.8475,0.845771144278607,0.85,0.8478802992518704,169,31,30,170,cm_beto.npy,5e-05,8,modelos/Transformers/beto_lr5e-05_bs8/final
