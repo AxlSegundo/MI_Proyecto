@@ -140,14 +140,17 @@ def main():
 
     print("\n=== Entrenando LSTM sobre W2V ponderado ===")
     lstm_model = build_lstm(input_dim)
-    lstm_model.fit(
-        X_train, y_train,
-        validation_split=0.2,
-        epochs=30,
-        batch_size=32,
-        callbacks=[es],
-        verbose=1
-    )
+    history_lstm = lstm_model.fit(
+    X_train, y_train,
+    validation_split=0.2,
+    epochs=30,
+    batch_size=32,
+    callbacks=[es],
+    verbose=1
+)
+
+    np.save(os.path.join(REPORTES_DIR, "history_lstm.npy"), history_lstm.history)
+
     lstm_path = os.path.join(MODELOS_DIR, "lstm_w2v.keras")
     lstm_model.save(lstm_path)
     print("LSTM guardado en:", lstm_path)
@@ -160,14 +163,17 @@ def main():
 
     print("\n=== Entrenando BiLSTM sobre W2V ponderado ===")
     bilstm_model = build_bilstm(input_dim)
-    bilstm_model.fit(
-        X_train, y_train,
-        validation_split=0.2,
-        epochs=30,
-        batch_size=32,
-        callbacks=[es],
-        verbose=1
-    )
+    history_bilstm = bilstm_model.fit(
+    X_train, y_train,
+    validation_split=0.2,
+    epochs=30,
+    batch_size=32,
+    callbacks=[es],
+    verbose=1
+)
+
+    np.save(os.path.join(REPORTES_DIR, "history_bilstm.npy"), history_bilstm.history)
+
     bilstm_path = os.path.join(MODELOS_DIR, "bilstm_w2v.keras")
     bilstm_model.save(bilstm_path)
     print("BiLSTM guardado en:", bilstm_path)

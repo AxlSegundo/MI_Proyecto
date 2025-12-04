@@ -42,6 +42,48 @@ def plot_confusion(cm, labels, title, fname):
     plt.close()
     print("Guardado:", out_path)
 
+def plot_training_curves(history_file, model_name):
+    history_path = os.path.join(REPORT_DIR, history_file)
+
+    if not os.path.exists(history_path):
+        print(f"No se encontró {history_path}")
+        return
+
+    history = np.load(history_path, allow_pickle=True).item()
+    epochs = range(1, len(history["loss"]) + 1)
+
+    # --- Loss ---
+    plt.figure()
+    plt.plot(epochs, history["loss"], label="Train Loss")
+    plt.plot(epochs, history["val_loss"], label="Val Loss")
+    plt.title(f"Loss por época - {model_name}")
+    plt.xlabel("Épocas")
+    plt.ylabel("Loss")
+    plt.legend()
+    plt.grid(True)
+    plt.tight_layout()
+
+    out_path = os.path.join(GRAF_DIR, f"loss_{model_name}.png")
+    plt.savefig(out_path)
+    plt.close()
+    print("Guardado:", out_path)
+
+    # --- Accuracy ---
+    plt.figure()
+    plt.plot(epochs, history["accuracy"], label="Train Acc")
+    plt.plot(epochs, history["val_accuracy"], label="Val Acc")
+    plt.title(f"Accuracy por época - {model_name}")
+    plt.xlabel("Épocas")
+    plt.ylabel("Accuracy")
+    plt.legend()
+    plt.grid(True)
+    plt.tight_layout()
+
+    out_path = os.path.join(GRAF_DIR, f"accuracy_{model_name}.png")
+    plt.savefig(out_path)
+    plt.close()
+    print("Guardado:", out_path)
+
 def main():
     if not os.path.exists(REPORT_PATH):
         raise FileNotFoundError(f"No se encontró {REPORT_PATH}. Corre primero entrenar_secuenciales.py")
@@ -72,5 +114,9 @@ def main():
         else:
             print(f"No se encontró la matriz de confusión para {modelo}: {cm_path}")
 
+        # Curvas de entrenamiento por época
+    plot_training_curves("history_lstm.npy", "lstm_w2v")
+    plot_training_curves("history_bilstm.npy", "bilstm_w2v")
+    
 if __name__ == "__main__":
     main()
